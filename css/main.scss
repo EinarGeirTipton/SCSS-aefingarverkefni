@@ -1,0 +1,85 @@
+@charset "UTF-8";
+@import 'normalize';
+
+// þetta er keyrt til að búa til css skránna //
+// sass --watch main.scss:main.css --style compressed //
+
+
+$grunnLitur: rgb(50,50,255);               // litagildi notað í breytu
+$litur1: darkblue;                         // litanafn notað í breytu
+$litur2: #0000CC;                          // hex litur í breytu
+$textastrengur: "Hi I'm Mario";            // textastrengur í breytu
+$leturStaerd: 1.2em;                       // tölugildi í breytu
+$rammi: 3px solid $litur2;                 // breyta með mismunandi gildi
+$fontfamily: serif;
+$fyrirsogn: 1.8em;
+  
+$breyta1: "Nintendo";                     // 3 breytur með mismunandi gildum
+$breyta2: " Switch ";
+$breyta3: " gameboy";     
+
+$breytur: $breyta1 + $breyta2 + $breyta3;  // 3 breytur settar saman
+
+
+@mixin textarMedLoftIKring {               // Mixin
+  padding: 15px;
+  margin: 10px;
+}
+
+body {                                    // breytur í tagi
+	font-family: $fontfamily;
+  font-size: $leturStaerd;
+}
+
+h1, h2 {
+    color: $litur1;
+}
+h3 {
+  color: darken($litur1,50);                // darken litafall
+  background-color: invert($litur1);        // invert litafall
+}
+//Mixin & functions
+header {
+  background-color: lighten($grunnLitur, 70%);
+  border: 1px solid darken($grunnLitur, 20%);
+  h1 {
+  	  color: $grunnLitur;
+  	  text-align: center;
+  	}
+}
+
+section {
+  border: $rammi;
+}
+
+.titill {                                 // breyta í klasa
+  font-size: $fyrirsogn;
+}
+
+.titill:after {                           // breyta í gervi-klasa
+    content: $textastrengur;   
+    font-size: 100px;
+    color: $litur1;
+}
+
+
+.undirtitill:after {
+  content: $breytur;
+    font-size: $leturStaerd - 0.6em;   // aðgerðir (minnka um 0.6em)
+    color: lighten($litur1,50);        // lighten litafall  
+  
+}
+
+nav {
+  background-color: $litur1;
+
+  a {                                   // hreiðarðir stílar
+    color: #ffffff;
+    font-size: $leturStaerd + 0.3em;   // aðgerðir (bæta við 0.3 em)
+    padding: 15px;
+    @include textarMedLoftIKring;
+  }
+
+
+}
+
